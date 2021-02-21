@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <title>Units converter</title>
+    </head>
+
+    <body>
+
+        <section class="top">
+            <h1>Temperature Converter</h1>
+        </section>
+
+        <section class="mid">
+            <h4>Convert from <span class="name-temperature1">celsius</span> to <span
+                    class="name-temperature2">fahrenheit</span></h4>
+            <div class="mid-content">
+                <div>
+                    <input type="number" name="" id="left-input" placeholder="Celsius">
+                    <select name="temperature-list" id="temperature-list1">
+                        <option value="celsius" class="celsius1">Celsius</option>
+                        <option value="fahrenheit" class="fahrenheit1">Fahrenheit</option>
+                        <option value="kelvin" class="kelvin1">Kelvin</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="number" name="" id="right-input" placeholder="Fahrenheit">
+                    <select name="temperature-list" id="temperature-list2">
+                        <option value="celsius" class="celsius2">Celsius</option>
+                        <option value="fahrenheit" class="fahrenheit2" selected>Fahrenheit</option>
+                        <option value="kelvin" class="kelvin2">Kelvin</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <p class="calculation-define">(<span class="inputValue">0</span>°<span class="letter-bold">C</span> ×
+                    9/5) + 32 = <span class="resultValue">32</span>°<span class="letter-bold">F</span>
+                </p>
+            </div>
+
+        </section>
+
+        <section class="bottom">
+            <p>Created by <span class="name">Llanz Kenneth Luy</span></p>
+        </section>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>
