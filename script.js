@@ -12,75 +12,104 @@ let allRun = () => {
   const cel2 = $(".celsius2");
   const fah1 = $(".fahrenheit1");
   const fah2 = $(".fahrenheit2");
-  let state1, state2;
-  console.log("state1: " + state1);
-  console.log("state2: " + state2);
+  let state1 = "celsius",
+    state2 = "fahrenheit",
+    number1 = 0,
+    number2 = 0;
+  let newInput1 = state1 + number1;
+  let newInput2 = state2 + number2;
+  console.log("state1: " + newInput1);
+  console.log("state2: " + newInput2);
   temp1.change(function (e) {
     const select1 = e.target;
-    if (select1.value === "fahrenheit" && state2 === "celsius") {
-      cel2.prop("selected", true);
+    number1++;
+
+    // if (select1.value === "fahrenheit") {
+    //   cel2.prop("selected", true);
+    //   state1 = "fahrenheit";
+    //   number1++;
+    // } else if (select1.value === "celsius") {
+    //   fah2.prop("selected", true);
+    //   state1 = "celsius";
+    //   number1++;
+    // } else if (select1.value === "kelvin" && state2 === "kelvin") {
+    //   state1 = "same";
+    //   console.log("Detect1: " + number1);
+    // } else if (select1.value === "kelvin") {
+    //   state1 = "kelvin";
+    // }
+
+    if (select1.value === "fahrenheit") {
       state1 = "fahrenheit";
-      // state2 = "celsius";
-    } else if (select1.value === "celsius" && state2 === "fahrenheit") {
-      fah2.prop("selected", true);
+    } else if (select1.value === "celsius") {
       state1 = "celsius";
-      // state2 = "fahrenheit";
-    } else if (select1.value === "kelvin" && state2 === "kelvin") {
-      state1 = "same";
-    } else if (select1.value === "kelvin" && state2 === "celsius") {
-      console.log("000");
+    } else if (select1.value === "kelvin") {
       state1 = "kelvin";
-      // state2 = "celsius";
-    } else if (select1.value === "kelvin" && state2 === "fahrenheit") {
-      state1 = "kelvin";
-      // state2 = "fahrenheit";
     }
-    console.log("state1: " + state1);
-    console.log("state2: " + state2);
+
+    if (state1 === "fahrenheit" && state2 === "fahrenheit") {
+      cel2.prop("selected", true);
+      state2 = "celsius";
+    } else if (state1 === "celsius" && state2 === "celsius") {
+      fah2.prop("selected", true);
+      state2 = "fahrenheit";
+    } else if (state1 === "kelvin" && state2 === "kelvin") {
+      number1--;
+      if (newInput1 === "fahrenheit" + number1) {
+        fah2.prop("selected", true);
+        state = "fahrenheit";
+      } else if (newInput1 === "celsius" + number1) {
+        cel2.prop("selected", true);
+        state2 = "celsius";
+        console.log(state2 + " 12313");
+      }
+    }
+
+    console.log("TEMP1");
+    newInput1 = state1 + number1;
+    console.log("number1: " + number1);
+    console.log("number2: " + number2);
+    console.log("state" + number1 + ": " + newInput1);
+    console.log("state" + number2 + ": " + newInput2);
   });
 
   temp2.change(function (e) {
     const select2 = e.target;
-    if (select2.value === "fahrenheit" && state1 !== "kelvin") {
-      cel1.prop("selected", true);
-      // state1 = "celsius";
+    number2++;
+
+    if (select2.value === "fahrenheit") {
       state2 = "fahrenheit";
-    } else if (select2.value === "celsius" && state1 !== "kelvin") {
-      fah1.prop("selected", true);
-      // state1 = "fahrenheit";
+    } else if (select2.value === "celsius") {
       state2 = "celsius";
-    } else if (select2.value === "kelvin" && state1 === "kelvin") {
-      state2 = "same";
-      cel1.prop("selected", true);
     } else if (select2.value === "kelvin") {
-      console.log("000");
       state2 = "kelvin";
     }
-    console.log("state1: " + state1);
-    console.log("state2: " + state2);
-    // optionSelecting(select2, state1, state2);
-  });
-};
 
-let optionSelecting = (select, state1, state2) => {
-  if (select.value === "fahrenheit" && state1 !== "kelvin") {
-    cel1.prop("selected", true);
-    state1 = "celsius";
-    state2 = "fahrenheit";
-  } else if (select.value === "celsius" && state1 !== "kelvin") {
-    fah1.prop("selected", true);
-    state1 = "fahrenheit";
-    state2 = "celsius";
-  } else if (select.value === "kelvin" && state1 === "kelvin") {
-    console.log("same");
-    state2 = "same";
-  }
-  if (select.value === "kelvin") {
-    console.log("000");
-    state2 = "kelvin";
-  }
-  console.log("state1: " + state1);
-  console.log("state2: " + state2);
+    if (state1 === "fahrenheit" && state2 === "fahrenheit") {
+      cel1.prop("selected", true);
+      state1 = "celsius";
+    } else if (state1 === "celsius" && state2 === "celsius") {
+      fah1.prop("selected", true);
+      state1 = "fahrenheit";
+    } else if (state1 === "kelvin" && state2 === "kelvin") {
+      number2--;
+      if (newInput2 === "fahrenheit" + number2) {
+        fah1.prop("selected", true);
+        state1 = "fahrenheit";
+        // state2 = "fahrenheit";
+      } else if (newInput2 === "celsius" + number2) {
+        cel1.prop("selected", true);
+        state1 = "celsius";
+        // state2 = "celsius";
+      }
+    }
+    newInput2 = state2 + number2;
+    console.log("TEMP2");
+    console.log("number1: " + number1);
+    console.log("number2: " + number2);
+    console.log("state" + number1 + ": " + newInput1);
+    console.log("state" + number2 + ": " + newInput2);
+  });
 };
 
 const temperature1 = $(".name-temperature1");
