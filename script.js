@@ -15,7 +15,8 @@ let allRun = () => {
   let state1 = "celsius",
     state2 = "fahrenheit",
     number1 = 0,
-    number2 = 0;
+    number2 = 0,
+    state3 = "fahrenheit";
   let newInput1 = state1 + number1;
   let newInput2 = state2 + number2;
   console.log("state1: " + newInput1);
@@ -23,22 +24,6 @@ let allRun = () => {
   temp1.change(function (e) {
     const select1 = e.target;
     number1++;
-
-    // if (select1.value === "fahrenheit") {
-    //   cel2.prop("selected", true);
-    //   state1 = "fahrenheit";
-    //   number1++;
-    // } else if (select1.value === "celsius") {
-    //   fah2.prop("selected", true);
-    //   state1 = "celsius";
-    //   number1++;
-    // } else if (select1.value === "kelvin" && state2 === "kelvin") {
-    //   state1 = "same";
-    //   console.log("Detect1: " + number1);
-    // } else if (select1.value === "kelvin") {
-    //   state1 = "kelvin";
-    // }
-
     if (select1.value === "fahrenheit") {
       state1 = "fahrenheit";
     } else if (select1.value === "celsius") {
@@ -46,7 +31,6 @@ let allRun = () => {
     } else if (select1.value === "kelvin") {
       state1 = "kelvin";
     }
-
     if (state1 === "fahrenheit" && state2 === "fahrenheit") {
       cel2.prop("selected", true);
       state2 = "celsius";
@@ -55,28 +39,38 @@ let allRun = () => {
       state2 = "fahrenheit";
     } else if (state1 === "kelvin" && state2 === "kelvin") {
       number1--;
-      if (newInput1 === "fahrenheit" + number1) {
-        fah2.prop("selected", true);
-        state = "fahrenheit";
-      } else if (newInput1 === "celsius" + number1) {
-        cel2.prop("selected", true);
+      if (number1 === 1) {
         state2 = "celsius";
-        console.log(state2 + " 12313");
+      } else {
+        state2 = "fahrenheit";
+      }
+      if (state2 === "fahrenheit") {
+        if (newInput1 === "fahrenheit" + number1) {
+          fah2.prop("selected", true);
+        } else if (newInput1 === "celsius" + number1) {
+          cel2.prop("selected", true);
+        }
+      } else if (state2 === "celsius") {
+        if (newInput1 === "fahrenheit" + number1) {
+          fah2.prop("selected", true);
+        } else if (newInput1 === "celsius" + number1) {
+          cel2.prop("selected", true);
+        }
       }
     }
 
     console.log("TEMP1");
     newInput1 = state1 + number1;
+    newInput2 = state2 + number2;
     console.log("number1: " + number1);
     console.log("number2: " + number2);
-    console.log("state" + number1 + ": " + newInput1);
-    console.log("state" + number2 + ": " + newInput2);
+    console.log("state1: " + newInput1);
+    console.log("state2: " + newInput2);
   });
 
   temp2.change(function (e) {
     const select2 = e.target;
     number2++;
-
     if (select2.value === "fahrenheit") {
       state2 = "fahrenheit";
     } else if (select2.value === "celsius") {
@@ -84,7 +78,6 @@ let allRun = () => {
     } else if (select2.value === "kelvin") {
       state2 = "kelvin";
     }
-
     if (state1 === "fahrenheit" && state2 === "fahrenheit") {
       cel1.prop("selected", true);
       state1 = "celsius";
@@ -93,22 +86,33 @@ let allRun = () => {
       state1 = "fahrenheit";
     } else if (state1 === "kelvin" && state2 === "kelvin") {
       number2--;
-      if (newInput2 === "fahrenheit" + number2) {
-        fah1.prop("selected", true);
+      if (number2 === 0) {
         state1 = "fahrenheit";
-        // state2 = "fahrenheit";
-      } else if (newInput2 === "celsius" + number2) {
-        cel1.prop("selected", true);
+      } else {
         state1 = "celsius";
-        // state2 = "celsius";
+      }
+      if (state1 === "fahrenheit") {
+        if (newInput2 === "fahrenheit" + number2) {
+          fah1.prop("selected", true);
+        } else {
+          cel1.prop("selected", true);
+        }
+      } else if (state1 === "celsius") {
+        if (newInput2 === "fahrenheit" + number2) {
+          fah1.prop("selected", true);
+        } else {
+          cel1.prop("selected", true);
+        }
       }
     }
-    newInput2 = state2 + number2;
+
     console.log("TEMP2");
+    newInput1 = state1 + number1;
+    newInput2 = state2 + number2;
     console.log("number1: " + number1);
     console.log("number2: " + number2);
-    console.log("state" + number1 + ": " + newInput1);
-    console.log("state" + number2 + ": " + newInput2);
+    console.log("state1: " + newInput1);
+    console.log("state2: " + newInput2);
   });
 };
 
