@@ -51,13 +51,9 @@ let allRun = () => {
         if (newInput1 === "fahrenheit" + number1) {
           fah2.prop("selected", true);
           state4 = "fahrenheit";
-        } else if (newInput1 === "celsius" + number1) {
-          cel2.prop("selected", true);
         }
       } else if (state2 === "celsius") {
-        if (newInput1 === "fahrenheit" + number1) {
-          fah2.prop("selected", true);
-        } else if (newInput1 === "celsius" + number1) {
+        if (newInput1 === "celsius" + number1) {
           cel2.prop("selected", true);
           state4 = "celsius";
         }
@@ -66,8 +62,6 @@ let allRun = () => {
     console.log("TEMP1");
     newInput1 = state1 + number1;
     newInput2 = state2 + number2;
-    // console.log("number1: " + number1);
-    // console.log("number2: " + number2);
     console.log("state1: " + newInput1);
     console.log("state2: " + newInput2);
   });
@@ -80,6 +74,7 @@ let allRun = () => {
       state4 = "fahrenheit";
     } else if (select2.value === "celsius") {
       state2 = "celsius";
+      state3 = "fahrenheit";
       state4 = "celsius";
     } else if (select2.value === "kelvin") {
       state2 = "kelvin";
@@ -102,25 +97,18 @@ let allRun = () => {
         if (newInput2 === "fahrenheit" + number2) {
           fah1.prop("selected", true);
           state3 = "fahrenheit";
-        } else {
-          cel1.prop("selected", true);
         }
       } else if (state1 === "celsius") {
-        if (newInput2 === "fahrenheit" + number2) {
-          fah1.prop("selected", true);
-        } else {
+        if (newInput2 === "celsius" + number2) {
           cel1.prop("selected", true);
           state3 = "celsius";
         }
       }
     }
-    // alert(state4);
     console.log("TEMP2");
     console.log(state3);
     newInput1 = state1 + number1;
     newInput2 = state2 + number2;
-    // console.log("number1: " + number1);
-    // console.log("number2: " + number2);
     console.log("state1: " + newInput1);
     console.log("state2: " + newInput2);
   });
