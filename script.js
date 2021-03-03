@@ -39,9 +39,12 @@ let allRun = () => {
       state2 = "celsius";
       changing(
         $("#left-input"),
+        $("#right-input"),
         "Fahrenheit",
         "Celsius",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>C</span></p>"
+        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>C</span></p>",
+        1,
+        2
       );
     } else if (state1 === "celsius" && state2 === "celsius") {
       fah2.prop("selected", true);
@@ -234,17 +237,68 @@ const temperature1 = $(".name-temperature1");
 const temperature2 = $(".name-temperature2");
 const showCalculation = $(".calculation-define");
 
-let changing = (leftInput, nameLeft, nameRight, calculationDefined) => {
+let changing = (
+  leftInput,
+  rightInput,
+  nameLeft,
+  nameRight,
+  calculationDefined,
+  chooseCalculation1,
+  chooseCalculation2
+) => {
   $("#left-input").attr("placeholder", nameLeft);
   $("#right-input").attr("placeholder", nameRight);
   nameLeft = nameLeft.toLowerCase();
   nameRight = nameRight.toLowerCase();
-  $(".name-temperature1").text(nameLeft);
-  $(".name-temperature2").text(nameRight);
+  temperature1.text(nameLeft);
+  temperature2.text(nameRight);
   showCalculation.html(calculationDefined);
-  const direction = $(leftInput);
-  direction.keypress(function () {
-    alert(123);
+  const leftDirection = $(leftInput);
+  const rightDirection = $(rightInput);
+  leftDirection.click(function () {
+    leftDirection.focus();
+    leftDirection.select();
+    temperature1.text(nameLeft);
+    temperature2.text(nameRight);
+  });
+  leftDirection.keyup(function () {
+    showCalculation.html(calculationDefined);
+    let inputShow = $(rightInput);
+    let getValue = leftDirection.val();
+    $(".inputValue").text(getValue);
+    getValue = temperatureCalculation(parseInt(getValue), chooseCalculation1);
+    const showValue = getValue.toFixed(2);
+    if (isNaN(showValue)) {
+      inputShow.val("");
+      $(".inputValue").text("");
+      $(".resultValue").text("");
+    } else {
+      inputShow.val(showValue);
+      $(".resultValue").text(showValue);
+    }
+  });
+  rightDirection.click(function () {
+    rightDirection.focus();
+    rightDirection.select();
+    temperature1.text(nameRight);
+    temperature2.text(nameLeft);
+  });
+  rightDirection.keyup(function () {
+    showCalculation.html(calculationDefined);
+    let inputShow = $(leftInput);
+    let getValue = rightDirection.val();
+    $(".resultValue").text(getValue);
+    getValue = temperatureCalculation(parseInt(getValue), chooseCalculation2);
+    const showValue = getValue.toFixed(2);
+    if (isNaN(showValue)) {
+      inputShow.val("");
+      $(".inputValue").text("");
+      $(".resultValue").text("");
+    } else {
+      $(".inputValue").text(showValue);
+      inputShow.val(showValue);
+      // $(".resultValue").text(showValue);
+    }
   });
 };
 
@@ -292,7 +346,6 @@ let inputCalculation = (
     temperature1.text(temperatureName1);
     temperature2.text(temperatureName2);
   });
-
   direction.keyup(function () {
     showCalculation.html(calculationDefined);
     let inputShow = $(inputDirection2);
