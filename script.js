@@ -1,15 +1,9 @@
 $(document).ready(function () {
   allRun();
 });
-// Celsius to fahrenheit
-// "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>C</span> × 9/5) + 32 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
-// fahrenheit to celsius
-// "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>C</span></p>"
+
 // This all combined the functions for the program
 let allRun = () => {
-  // leftInput();
-  // rightInput();
-
   const temp1 = $("#temperature-list1");
   const temp2 = $("#temperature-list2");
   const cel1 = $(".celsius1");
@@ -51,20 +45,20 @@ let allRun = () => {
     if (state1 === "fahrenheit" && state2 === "fahrenheit") {
       cel2.prop("selected", true);
       state2 = "celsius";
-      // fahrenheit to celsius
+      // fahrenheit to celsius check
       changing(
         $("#left-input"),
         $("#right-input"),
         "Fahrenheit",
         "Celsius",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>C</span></p>",
+        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>17.78</span>°<span class='letter-bold'>C</span></p>",
         1,
         2
       );
     } else if (state1 === "celsius" && state2 === "celsius") {
       fah2.prop("selected", true);
       state2 = "fahrenheit";
-      // Celsius to fahrenheit
+      // Celsius to fahrenheit check
       changing(
         $("#left-input"),
         $("#right-input"),
@@ -75,78 +69,107 @@ let allRun = () => {
         1
       );
     } else if (state1 === "kelvin" && state2 === "celsius") {
-      // -16.11K − 273.15) × 9/5 + 32 = -488.7°F
-      // Kelvin to fahrenheit
+      // Kelvin to Celsius check
       changing(
         $("#left-input"),
         $("#right-input"),
         "Kelvin",
+        "Celsius",
+        "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15 = <span class='resultValue'>-273.15</span>°<span class='letter-bold'>C</span></p>",
+        5,
+        6
+      );
+    } else if (state1 === "fahrenheit" && state2 === "celsius") {
+      // Fahrenheit to Celsius check
+      changing(
+        $("#left-input"),
+        $("#right-input"),
+        "Fahrenheit",
+        "Celsius",
+        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>-17.78</span>°<span class='letter-bold'>C</span></p>",
+        1,
+        2
+      );
+    } else if (state1 === "celsius" && state2 === "kelvin") {
+      // Celsius to Celsius check
+      changing(
+        $("#left-input"),
+        $("#right-input"),
+        "Kelvin",
+        "Celsius",
+        "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15 = <span class='resultValue'>-273.10</span>°<span class='letter-bold'>C</span></p>",
+        5,
+        6
+      );
+    } else if (state1 === "fahrenheit" && state2 === "kelvin") {
+      // Kelvin to Fahrenheit check
+      changing(
+        $("#left-input"),
+        $("#right-input"),
+        "Fahrenheit",
+        "Kelvin",
+        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>255.37</span><span class='letter-bold'>°F</span></p>",
+        4,
+        3
+      );
+    } else if (state1 === "celsius" && state2 === "fahrenheit") {
+      // Celsius to fahrenheit
+      changing(
+        $("#left-input"),
+        $("#right-input"),
+        "Celsius",
         "Fahrenheit",
         "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>C</span> × 9/5) + 32 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>",
         2,
         1
       );
-    } else if (state1 === "fahrenheit" && state2 === "celsius") {
-      changing(
-        "Fahrenheit",
-        "Celsius",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
-      );
-    } else if (state1 === "celsius" && state2 === "kelvin") {
-      // (0K − 273.15) × 9/5 + 32 = -459.7°F
-
-      changing(
-        "Celsius",
-        "Kelvin",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
-      );
-    } else if (state1 === "fahrenheit" && state2 === "kelvin") {
-      // (1°F − 32) × 5/9 + 273.15 = 255.928K fahrenheit to kelvin
-      changing(
-        "Fahrenheit",
-        "Kelvin",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 + 273.15 = <span class='resultValue'>255.372</span><span class='letter-bold'>K</span></p>"
-      );
-    } else if (state1 === "celsius" && state2 === "fahrenheit") {
-      changing(
-        "Celsius",
-        "Fahrenheit",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>C</span> × 9/5) + 32 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
-      );
     } else if (state1 === "kelvin" && state2 === "fahrenheit") {
-      // (1K − 273.15) × 9/5 + 32 = -457.9°F
+      // Kelvin to fahrenheit check
       changing(
         $("#left-input"),
         $("#right-input"),
         "Kelvin",
         "Fahrenheit",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>-432</span>°<span class='letter-bold'>F</span></p>",
+        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>-459.7</span>°<span class='letter-bold'>F</span></p>",
         3,
-        1
+        4
       );
     } else if (state1 === state2) {
       number1--;
       if (state3 === "fahrenheit") {
         state2 = "fahrenheit";
-        changing(
-          "Kelvin",
-          "Fahrenheit",
-          "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 + 273.15 = <span class='resultValue'>255.372</span><span class='letter-bold'>K</span></p>"
-        );
       } else {
         state2 = "celsius";
-        changing("Kelvin", "Celsius", "rrrrrrr");
       }
       if (state2 === "fahrenheit") {
         if (newInput1 === "fahrenheit" + number1) {
           fah2.prop("selected", true);
           state4 = "fahrenheit";
+          // Kelvin to Fahrenheit check
+          changing(
+            $("#left-input"),
+            $("#right-input"),
+            "Kelvin",
+            "Fahrenheit",
+            "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>255.37</span><span class='letter-bold'>°F</span></p>",
+            3,
+            4
+          );
         }
       } else if (state2 === "celsius") {
         if (newInput1 === "celsius" + number1) {
           cel2.prop("selected", true);
           state4 = "celsius";
-          changing("Kelvin", "Celsius", "rrrrrrr");
+          // Kelvin to Celsius check
+          changing(
+            $("#left-input"),
+            $("#right-input"),
+            "Celsius",
+            "Kelvin",
+            "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15 = <span class='resultValue'>273.15</span><span class='letter-bold'>°C</span></p>",
+            5,
+            6
+          );
         }
       }
     }
@@ -173,7 +196,7 @@ let allRun = () => {
     if (state1 === "fahrenheit" && state2 === "fahrenheit") {
       cel1.prop("selected", true);
       state1 = "celsius";
-      // Celsius to fahrenheit
+      // Celsius to fahrenheit check
       changing(
         $("#left-input"),
         $("#right-input"),
@@ -186,7 +209,7 @@ let allRun = () => {
     } else if (state1 === "celsius" && state2 === "celsius") {
       fah1.prop("selected", true);
       state1 = "fahrenheit";
-      // fahrenheit to celsius
+      // fahrenheit to celsius check
       changing(
         $("#left-input"),
         $("#right-input"),
@@ -197,41 +220,70 @@ let allRun = () => {
         2
       );
     } else if (state1 === "celsius" && state2 === "kelvin") {
-      // 0°C + 273.15 = 273.15K
+      // Kelvin to Celsius check
       changing(
+        $("#left-input"),
+        $("#right-input"),
         "Celsius",
         "Kelvin",
-        "<p class='calculation-define'>0<span class='inputValue'></span>°<span class='letter-bold'>C</span> + 273.15 = <span class='resultValue'>273.15</span><span class='letter-bold'>K</span></p>"
+        "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>°C</span> + 273.15 = <span class='resultValue'>273.15</span><span class='letter-bold'>K</span></p>",
+        6,
+        5
       );
     } else if (state1 === "fahrenheit" && state2 === "kelvin") {
+      // Kelvin to Fahrenheit check
       changing(
+        $("#left-input"),
+        $("#right-input"),
         "Fahrenheit",
         "Kelvin",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>F</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>-457.9</span>°<span class='letter-bold'>K</span></p>"
+        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>°F</span> - 32) x 5/9 + 273.15 = <span class='resultValue'>255.37</span><span class='letter-bold'>K</span></p>",
+        4,
+        3
       );
     } else if (state1 === "kelvin" && state2 === "fahrenheit") {
+      // Kelvin to Fahrenheit check
       changing(
+        $("#left-input"),
+        $("#right-input"),
         "Kelvin",
         "Fahrenheit",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>-457.9</span>°<span class='letter-bold'>F</span></p>"
+        "<p class='calculation-define'>(<span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>255.37</span><span class='letter-bold'>°F</span></p>",
+        3,
+        4
       );
     } else if (state1 === "kelvin" && state2 === "celsius") {
+      // Kelvin to Celsius check
       changing(
+        $("#left-input"),
+        $("#right-input"),
         "Kelvin",
         "Celsius",
-        "<p class='calculation-define'>0<span class='inputValue'></span>°<span class='letter-bold'>K</span> - 273.15 = <span class='resultValue'>-273.1</span>°<span class='letter-bold'>C</span></p>"
+        "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>K</span> - 273.15 = <span class='resultValue'>-273.10</span>°<span class='letter-bold'>C</span></p>",
+        5,
+        6
       );
     } else if (state1 === "fahrenheit" && state2 === "celsius") {
+      // fahrenheit to celsius check
       changing(
+        $("#left-input"),
+        $("#right-input"),
         "Fahrenheit",
         "Celsius",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
+        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 = <span class='resultValue'>-17.78</span>°<span class='letter-bold'>C</span></p>",
+        1,
+        2
       );
     } else if (state1 === "celsius" && state2 === "fahrenheit") {
+      // fahrenheit to celsius check
       changing(
-        "Fahrenheit",
+        $("#left-input"),
+        $("#right-input"),
         "Celsius",
-        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>C</span> × 9/5) + 32 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>"
+        "Fahrenheit",
+        "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>C</span> x 5/9) + 32 = <span class='resultValue'>32</span>°<span class='letter-bold'>F</span></p>",
+        2,
+        1
       );
     } else if (state1 === state2) {
       number2--;
@@ -240,26 +292,34 @@ let allRun = () => {
       } else {
         state1 = "celsius";
       }
-      // (0°F − 32) × 5/9 + 273.15 = 255.372K
-
       if (state1 === "fahrenheit") {
         if (newInput2 === "fahrenheit" + number2) {
           fah1.prop("selected", true);
           state3 = "fahrenheit";
+          // Kelvin to Fahrenheit check
           changing(
+            $("#left-input"),
+            $("#right-input"),
             "Fahrenheit",
             "Kelvin",
-            "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 + 273.15 = <span class='resultValue'>255.372</span><span class='letter-bold'>K</span></p>"
+            "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 273.15) x 9/5 + 32 = <span class='resultValue'>-459.67</span>°<span class='letter-bold'>F</span></p>",
+            4,
+            3
           );
         }
       } else if (state1 === "celsius") {
         if (newInput2 === "celsius" + number2) {
           cel1.prop("selected", true);
           state3 = "celsius";
+          // Kelvin to Celsius check
           changing(
+            $("#left-input"),
+            $("#right-input"),
             "Celsius",
             "Kelvin",
-            "<p class='calculation-define'>(<span class='inputValue'>0</span>°<span class='letter-bold'>F</span> - 32) x 5/9 + 273.15 = <span class='resultValue'>255.372</span><span class='letter-bold'>K</span></p>"
+            "<p class='calculation-define'><span class='inputValue'>0</span><span class='letter-bold'>°C</span> - 273.15 = <span class='resultValue'>-273.10</span><span class='letter-bold'>K</span></p>",
+            6,
+            5
           );
         }
       }
@@ -411,8 +471,16 @@ let temperatureCalculation = (setValue, number) => {
     return ((setValue - 32) * 5) / 9;
   } else if (number === 3) {
     // Kelvin to fahrenheit
-    // (-16.11K − 273.15) × 9/5 + 32 = -488.7°F
     return ((setValue - 273.15) * 9) / 5 + 32;
+  } else if (number === 4) {
+    // Fahrenheit to Kelvin
+    return ((setValue - 32) * 5) / 9 + 273.15;
+  } else if (number === 5) {
+    // Kelvin to celsius
+    return setValue - 273.15;
+  } else if (number === 6) {
+    // Celsius to kelvin
+    return setValue + 273.15;
   } else {
     // Celsius to fahrenheit
     return (setValue * 9) / 5 + 32;
