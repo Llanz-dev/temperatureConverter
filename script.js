@@ -10,15 +10,15 @@ let allRun = () => {
   const cel2 = $(".celsius2");
   const fah1 = $(".fahrenheit1");
   const fah2 = $(".fahrenheit2");
-  let state1 = "celsius",
-    state2 = "fahrenheit",
-    state3 = "celsius",
-    state4 = "fahrenheit";
+  let optionSelected1 = "celsius",
+    optionSelected2 = "fahrenheit",
+    optionSelected3 = "celsius",
+    optionSelected4 = "fahrenheit";
   (number1 = 0), (number2 = 0);
-  let newInput1 = state1 + number1;
-  let newInput2 = state2 + number2;
-  console.log("state1: " + newInput1);
-  console.log("state2: " + newInput2);
+  let newInput1 = optionSelected1 + number1;
+  let newInput2 = optionSelected2 + number2;
+  console.log("optionSelected1: " + newInput1);
+  console.log("optionSelected2: " + newInput2);
   // Celsius to fahrenheit
   changing(
     $("#left-input"),
@@ -33,18 +33,18 @@ let allRun = () => {
     const select1 = e.target;
     number1++;
     if (select1.value === "fahrenheit") {
-      state1 = "fahrenheit";
-      state3 = "fahrenheit";
-      state4 = "celsius";
+      optionSelected1 = "fahrenheit";
+      optionSelected3 = "fahrenheit";
+      optionSelected4 = "celsius";
     } else if (select1.value === "celsius") {
-      state1 = "celsius";
-      state3 = "celsius";
+      optionSelected1 = "celsius";
+      optionSelected3 = "celsius";
     } else if (select1.value === "kelvin") {
-      state1 = "kelvin";
+      optionSelected1 = "kelvin";
     }
-    if (state1 === "fahrenheit" && state2 === "fahrenheit") {
+    if (optionSelected1 === "fahrenheit" && optionSelected2 === "fahrenheit") {
       cel2.prop("selected", true);
-      state2 = "celsius";
+      optionSelected2 = "celsius";
       // fahrenheit to celsius check
       changing(
         $("#left-input"),
@@ -55,9 +55,9 @@ let allRun = () => {
         1,
         2
       );
-    } else if (state1 === "celsius" && state2 === "celsius") {
+    } else if (optionSelected1 === "celsius" && optionSelected2 === "celsius") {
       fah2.prop("selected", true);
-      state2 = "fahrenheit";
+      optionSelected2 = "fahrenheit";
       // Celsius to celsius check
       changing(
         $("#left-input"),
@@ -68,7 +68,7 @@ let allRun = () => {
         2,
         1
       );
-    } else if (state1 === "kelvin" && state2 === "celsius") {
+    } else if (optionSelected1 === "kelvin" && optionSelected2 === "celsius") {
       // Kelvin to Celsius check
       changing(
         $("#left-input"),
@@ -79,7 +79,10 @@ let allRun = () => {
         5,
         6
       );
-    } else if (state1 === "fahrenheit" && state2 === "celsius") {
+    } else if (
+      optionSelected1 === "fahrenheit" &&
+      optionSelected2 === "celsius"
+    ) {
       // Fahrenheit to Celsius check
       changing(
         $("#left-input"),
@@ -90,7 +93,7 @@ let allRun = () => {
         1,
         2
       );
-    } else if (state1 === "celsius" && state2 === "kelvin") {
+    } else if (optionSelected1 === "celsius" && optionSelected2 === "kelvin") {
       // Celsius to Kelvin check
       changing(
         $("#left-input"),
@@ -101,7 +104,10 @@ let allRun = () => {
         6,
         5
       );
-    } else if (state1 === "fahrenheit" && state2 === "kelvin") {
+    } else if (
+      optionSelected1 === "fahrenheit" &&
+      optionSelected2 === "kelvin"
+    ) {
       // Fahrenheit to Kelvin check
       changing(
         $("#left-input"),
@@ -112,7 +118,10 @@ let allRun = () => {
         4,
         3
       );
-    } else if (state1 === "celsius" && state2 === "fahrenheit") {
+    } else if (
+      optionSelected1 === "celsius" &&
+      optionSelected2 === "fahrenheit"
+    ) {
       // Celsius to fahrenheit
       changing(
         $("#left-input"),
@@ -123,7 +132,10 @@ let allRun = () => {
         2,
         1
       );
-    } else if (state1 === "kelvin" && state2 === "fahrenheit") {
+    } else if (
+      optionSelected1 === "kelvin" &&
+      optionSelected2 === "fahrenheit"
+    ) {
       // Kelvin to fahrenheit check
       changing(
         $("#left-input"),
@@ -134,17 +146,17 @@ let allRun = () => {
         3,
         4
       );
-    } else if (state1 === state2) {
+    } else if (optionSelected1 === optionSelected2) {
       number1--;
-      if (state3 === "fahrenheit") {
-        state2 = "fahrenheit";
+      if (optionSelected3 === "fahrenheit") {
+        optionSelected2 = "fahrenheit";
       } else {
-        state2 = "celsius";
+        optionSelected2 = "celsius";
       }
-      if (state2 === "fahrenheit") {
+      if (optionSelected2 === "fahrenheit") {
         if (newInput1 === "fahrenheit" + number1) {
           fah2.prop("selected", true);
-          state4 = "fahrenheit";
+          optionSelected4 = "fahrenheit";
           // Kelvin to Fahrenheit check
           changing(
             $("#left-input"),
@@ -156,10 +168,10 @@ let allRun = () => {
             4
           );
         }
-      } else if (state2 === "celsius") {
+      } else if (optionSelected2 === "celsius") {
         if (newInput1 === "celsius" + number1) {
           cel2.prop("selected", true);
-          state4 = "celsius";
+          optionSelected4 = "celsius";
           // Kelvin to Celsius check
           changing(
             $("#left-input"),
@@ -174,28 +186,28 @@ let allRun = () => {
       }
     }
     console.log("TEMP1");
-    newInput1 = state1 + number1;
-    newInput2 = state2 + number2;
-    console.log("state1: " + newInput1);
-    console.log("state2: " + newInput2);
+    newInput1 = optionSelected1 + number1;
+    newInput2 = optionSelected2 + number2;
+    console.log("optionSelected1: " + newInput1);
+    console.log("optionSelected2: " + newInput2);
   });
 
   temp2.change(function (e) {
     const select2 = e.target;
     number2++;
     if (select2.value === "fahrenheit") {
-      state2 = "fahrenheit";
-      state4 = "fahrenheit";
+      optionSelected2 = "fahrenheit";
+      optionSelected4 = "fahrenheit";
     } else if (select2.value === "celsius") {
-      state2 = "celsius";
-      state3 = "fahrenheit";
-      state4 = "celsius";
+      optionSelected2 = "celsius";
+      optionSelected3 = "fahrenheit";
+      optionSelected4 = "celsius";
     } else if (select2.value === "kelvin") {
-      state2 = "kelvin";
+      optionSelected2 = "kelvin";
     }
-    if (state1 === "fahrenheit" && state2 === "fahrenheit") {
+    if (optionSelected1 === "fahrenheit" && optionSelected2 === "fahrenheit") {
       cel1.prop("selected", true);
-      state1 = "celsius";
+      optionSelected1 = "celsius";
       // Celsius to fahrenheit check
       changing(
         $("#left-input"),
@@ -206,9 +218,9 @@ let allRun = () => {
         2,
         1
       );
-    } else if (state1 === "celsius" && state2 === "celsius") {
+    } else if (optionSelected1 === "celsius" && optionSelected2 === "celsius") {
       fah1.prop("selected", true);
-      state1 = "fahrenheit";
+      optionSelected1 = "fahrenheit";
       // fahrenheit to celsius check
       changing(
         $("#left-input"),
@@ -219,7 +231,7 @@ let allRun = () => {
         1,
         2
       );
-    } else if (state1 === "celsius" && state2 === "kelvin") {
+    } else if (optionSelected1 === "celsius" && optionSelected2 === "kelvin") {
       // Kelvin to Celsius check
       changing(
         $("#left-input"),
@@ -230,7 +242,10 @@ let allRun = () => {
         6,
         5
       );
-    } else if (state1 === "fahrenheit" && state2 === "kelvin") {
+    } else if (
+      optionSelected1 === "fahrenheit" &&
+      optionSelected2 === "kelvin"
+    ) {
       // Kelvin to Fahrenheit check
       changing(
         $("#left-input"),
@@ -241,7 +256,10 @@ let allRun = () => {
         4,
         3
       );
-    } else if (state1 === "kelvin" && state2 === "fahrenheit") {
+    } else if (
+      optionSelected1 === "kelvin" &&
+      optionSelected2 === "fahrenheit"
+    ) {
       // Kelvin to Fahrenheit check
       changing(
         $("#left-input"),
@@ -252,7 +270,7 @@ let allRun = () => {
         3,
         4
       );
-    } else if (state1 === "kelvin" && state2 === "celsius") {
+    } else if (optionSelected1 === "kelvin" && optionSelected2 === "celsius") {
       // Kelvin to Celsius check
       changing(
         $("#left-input"),
@@ -263,7 +281,10 @@ let allRun = () => {
         5,
         6
       );
-    } else if (state1 === "fahrenheit" && state2 === "celsius") {
+    } else if (
+      optionSelected1 === "fahrenheit" &&
+      optionSelected2 === "celsius"
+    ) {
       // fahrenheit to celsius check
       changing(
         $("#left-input"),
@@ -274,7 +295,10 @@ let allRun = () => {
         1,
         2
       );
-    } else if (state1 === "celsius" && state2 === "fahrenheit") {
+    } else if (
+      optionSelected1 === "celsius" &&
+      optionSelected2 === "fahrenheit"
+    ) {
       // fahrenheit to celsius check
       changing(
         $("#left-input"),
@@ -285,17 +309,17 @@ let allRun = () => {
         2,
         1
       );
-    } else if (state1 === state2) {
+    } else if (optionSelected1 === optionSelected2) {
       number2--;
-      if (state4 === "fahrenheit") {
-        state1 = "fahrenheit";
+      if (optionSelected4 === "fahrenheit") {
+        optionSelected1 = "fahrenheit";
       } else {
-        state1 = "celsius";
+        optionSelected1 = "celsius";
       }
-      if (state1 === "fahrenheit") {
+      if (optionSelected1 === "fahrenheit") {
         if (newInput2 === "fahrenheit" + number2) {
           fah1.prop("selected", true);
-          state3 = "fahrenheit";
+          optionSelected3 = "fahrenheit";
           // Kelvin to Fahrenheit check
           changing(
             $("#left-input"),
@@ -307,10 +331,10 @@ let allRun = () => {
             3
           );
         }
-      } else if (state1 === "celsius") {
+      } else if (optionSelected1 === "celsius") {
         if (newInput2 === "celsius" + number2) {
           cel1.prop("selected", true);
-          state3 = "celsius";
+          optionSelected3 = "celsius";
           // Kelvin to Celsius check
           changing(
             $("#left-input"),
@@ -325,10 +349,10 @@ let allRun = () => {
       }
     }
     console.log("TEMP2");
-    newInput1 = state1 + number1;
-    newInput2 = state2 + number2;
-    console.log("state1: " + newInput1);
-    console.log("state2: " + newInput2);
+    newInput1 = optionSelected1 + number1;
+    newInput2 = optionSelected2 + number2;
+    console.log("optionSelected1: " + newInput1);
+    console.log("optionSelected2: " + newInput2);
   });
 };
 
